@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui.eCommerce.Views.InventoryManagementView"
+             Title="InventoryManagementView"
+             NavigatedTo="ContentPage_NavigatedTo"
+             >
+    <VerticalStackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Entry Text="{Binding Query}" Grid.Column="0"/>
+                <Button Text="Search"  Grid.Column="1" Clicked="SearchClicked"/>
+        </Grid>
+        <Label 
+            Text="Inventory Management!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <ListView
+            ItemsSource="{Binding Path=Products}"
+            SelectedItem="{Binding SelectedProduct}"
+            >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="{Binding Display}"/>
+                            <Button Grid.Column="1" Text="Edit"/>
+                            <Button Grid.Column="2" Text="Delete"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text= "Add" Clicked="AddClicked"/>
+        <Button Text="Edit" Clicked="EditClicked"/>
+        <Button Text="Edit"/>
+        <Button
+            Text="Delete"
+            Clicked="DeleteClicked" 
+            
+            />
+        <Button Text ="Go Back"
+                Clicked="CancelClicked"
+                />
+
+
+    </VerticalStackLayout>
+</ContentPage>

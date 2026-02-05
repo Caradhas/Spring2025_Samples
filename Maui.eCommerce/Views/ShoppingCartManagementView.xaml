@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+    
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui.eCommerce.Views.ShoppingCartManagementView"
+             Title="ShoppingCartManagementView">
+
+    <VerticalStackLayout>
+        <Grid ColumnSpacing="10" RowSpacing="10" Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Entry Text="{Binding Query}" Grid.Column="0" Placeholder="Search by Name"/>
+                <Button Text="Search" Grid.Column="1" Clicked="SearchClicked"/>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Entry Text="{Binding Query}" Grid.Column="0" Placeholder="Search by Name"/>
+                <Button Text="Search" Grid.Column="1" Clicked="ShopSearchClicked"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Entry Text="{Binding Query}" Grid.Column="0" Placeholder="Search by Price"/>
+                <Button Text="Search" Grid.Column="1" Clicked="PriceSearchClicked"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Entry Text="{Binding Query}" Grid.Column="0" Placeholder="Search by Price"/>
+                <Button Text="Search" Grid.Column="1" Clicked="ShopPriceSearchClicked"/>
+            </Grid>
+        </Grid>
+
+        <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/><!--STORE-->
+            <ColumnDefinition/><!--USER SHOPPING CART-->
+        </Grid.ColumnDefinitions>
+        <!--STORE-->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+                <ListView Grid.Row="0"
+                ItemsSource="{Binding Inventory}"
+                SelectedItem="{Binding SelectedItem}"
+                >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width = "5*"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="{Binding Id}"/>
+                                    <Label Grid.Column="1" Text="{Binding Product.Name}"/>
+                                    <Label Grid.Column="2" Text="{Binding Product.cost}"/>
+                                    <Label Grid.Column="3" Text="x"/>
+                                    <Label Grid.Column="4" Text="{Binding Quantity}"/>
+                                    <Entry Grid.Column="5" 
+                                Placeholder="Qty"
+                                Keyboard="Numeric"
+                                WidthRequest="50"
+                                Text="{Binding ItemQuantity}" />
+                                    <Button Grid.Column="6"
+                                Text="+"
+                                CommandParameter="{Binding}"
+                                Clicked="AddToCartClicked"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Grid.Row="1" Text="+" Clicked="AddOneToCartClicked"/>
+            </Grid>
+        
+        <!--USER SHOPPING CART-->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <ListView Grid.Row="0"
+                ItemsSource="{Binding ShoppingCart}"
+                SelectedItem="{Binding SelectedCartItem}"
+                      >
+            </ListView>
+            <Button Grid.Row="1" Text="-" Clicked="RemoveFromCartClicked"/>
+
+        </Grid>
+
+
+    </Grid>
+        <Button
+                Text="Go Back"
+                Clicked="GoBackClicked"
+                />
+    </VerticalStackLayout>
+</ContentPage>

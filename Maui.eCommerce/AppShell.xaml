@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Maui.eCommerce.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Maui.eCommerce"
+    xmlns:views="clr-namespace:Maui.eCommerce.Views"
+    Shell.FlyoutBehavior="Disabled"
+    Title="Maui.eCommerce">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+    <ShellContent
+        Title="Inventory"
+        ContentTemplate="{DataTemplate views:InventoryManagementView}"
+        Route="InventoryManagement" />
+    <ShellContent
+       Title="Inventory"
+       ContentTemplate="{DataTemplate views:ProductDetails}"
+       Route="Product"/>
+    <ShellContent
+       Title="ShoppingCart"
+       ContentTemplate="{DataTemplate views:ShoppingCartManagementView}"
+       Route="ShoppingCartManagement"/>
+
+
+</Shell>
