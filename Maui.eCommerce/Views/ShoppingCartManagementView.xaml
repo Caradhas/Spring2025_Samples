@@ -77,7 +77,6 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
-                                        <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="{Binding Id}"/>
                                     <Label Grid.Column="1" Text="{Binding Product.Name}"/>
@@ -89,10 +88,7 @@
                                 Keyboard="Numeric"
                                 WidthRequest="50"
                                 Text="{Binding ItemQuantity}" />
-                                    <Button Grid.Column="6"
-                                Text="+"
-                                CommandParameter="{Binding}"
-                                Clicked="AddToCartClicked"/>
+
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
